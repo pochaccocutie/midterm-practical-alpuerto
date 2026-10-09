@@ -1,0 +1,150 @@
+:root {
+  --bg-color: #f9fafb;
+  --surface-color: #ffffff;
+  --text-color: #111827;
+  --primary-color: #2563eb;
+  --primary-hover: #1d4ed8;
+  --border-color: #d1d5db;
+
+  --space-sm: 8px;
+  --space-md: 16px;
+  --space-lg: 24px;
+
+
+  --font-h1: 32px;
+  --font-h2: 24px;
+  --font-body: 16px;
+}
+
+
+* {
+  box-sizing: border-box;
+  margin: 0;
+  padding: 0;
+}
+
+body {
+  font-family: Arial, sans-serif;
+  font-size: var(--font-body);
+  background-color: var(--bg-color);
+  color: var(--text-color);
+  line-height: 1.5;
+  padding: var(--space-md);
+}
+
+
+img {
+  max-width: 100%;
+  height: auto;
+  border-radius: 8px;
+  margin-top: var(--space-sm);
+}
+
+
+h1 {
+  font-size: var(--font-h1);
+  margin-bottom: var(--space-sm);
+}
+
+h2 {
+  font-size: var(--font-h2);
+  margin-bottom: var(--space-sm);
+}
+
+
+header {
+  background-color: var(--surface-color);
+  border: 1px solid var(--border-color);
+  border-radius: 8px;
+  padding: var(--space-md);
+  margin-bottom: var(--space-lg);
+}
+
+nav ul {
+  display: flex;
+  list-style: none;
+  gap: var(--space-md);
+}
+
+nav a {
+  color: var(--primary-color);
+  text-decoration: none;
+  font-weight: bold;
+  padding: var(--space-sm);
+  border-radius: 4px;
+}
+
+
+nav a:hover,
+nav a:focus {
+  background-color: var(--primary-color);
+  color: #ffffff;
+  outline: 2px solid var(--primary-hover);
+}
+
+
+table {
+  width: 100%;
+  border-collapse: collapse;
+  background-color: var(--surface-color);
+  margin-top: var(--space-sm);
+}
+
+caption {
+  font-weight: bold;
+  margin-bottom: var(--space-sm);
+  text-align: left;
+}
+
+th, td {
+  border: 1px solid var(--border-color);
+  padding: var(--space-sm) var(--space-md);
+  text-align: left;
+}
+
+th {
+  background-color: #f3f4f6;
+}
+
+
+form {
+  background-color: var(--surface-color);
+  padding: var(--space-md);
+  border: 1px solid var(--border-color);
+  border-radius: 8px;
+  display: flex;
+  flex-direction: column;
+  gap: var(--space-md);
+}
+
+form div {
+  display: flex;
+  flex-direction: column;
+  gap: 4px;
+}
+
+input, textarea, button {
+  font-size: var(--font-body);
+  padding: var(--space-sm);
+  border: 1px solid var(--border-color);
+  border-radius: 4px;
+}
+
+
+input:focus, textarea:focus, button:focus, button:hover {
+  outline: 2px solid var(--primary-color);
+  border-color: var(--primary-color);
+}
+
+button {
+  background-color: var(--primary-color);
+  color: #ffffff;
+  font-weight: bold;
+  cursor: pointer;
+  border: none;
+  align-self: flex-start;
+}
+
+button:hover {
+  background-color: var(--primary-hover);
+}
