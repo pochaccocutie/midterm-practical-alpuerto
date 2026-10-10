@@ -23,6 +23,30 @@
   padding: 0;
 }
 
+html {
+  scroll-behavior: smooth;
+}
+
+section {
+  min-height: 80vh;
+  padding-top: var(--space-lg);
+  padding-bottom: var(--space-lg);
+  border-bottom: 1px solid var(--border-color);
+  margin-bottom: var(--space-lg); 
+}
+
+@media (min-width: 768px) {
+  main {
+    grid-template-columns: repeat(2, 1fr);
+  }
+}
+
+@media (min-width: 1440px) {
+  main {
+    grid-template-columns: repeat(3, 1fr);
+  }
+}
+
 body {
   font-family: Arial, sans-serif;
   font-size: var(--font-body);
@@ -62,7 +86,9 @@ header {
 
 nav ul {
   display: flex;
+  flex-wrap: wrap;
   list-style: none;
+  justify-content: center;
   gap: var(--space-md);
 }
 
