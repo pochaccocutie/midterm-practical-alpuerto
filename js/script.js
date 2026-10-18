@@ -52,3 +52,25 @@ if (servicesBody) {
     }
     servicesBody.innerHTML = outputHTML;
 }
+
+var contactForm = document.getElementById('contact-form');
+var formFeedback = document.getElementById('form-feedback');
+
+if (contactForm) {
+    contactForm.addEventListener('submit', function(event) {
+        var nameValue = document.getElementById('name').value;
+        var emailValue = document.getElementById('email').value;
+        var messageValue = document.getElementById('message').value;
+        if (nameValue === '' || emailValue === '' || messageValue === '') {
+            event.preventDefault(); 
+            formFeedback.textContent = 'Please fill out all required fields before sending.';
+            formFeedback.style.color = 'red';
+        }   
+        else {
+            event.preventDefault(); 
+            formFeedback.textContent = 'Thank you! Your message is succesfully sent.';
+            formFeedback.style.color = 'green';
+            contactForm.reset();
+        }
+    });
+}
