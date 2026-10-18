@@ -9,7 +9,9 @@
 <body>
     <header>
         <nav>
-            <ul>
+            <button id="nav-toggle" aria-label="Toggle navigation menu">☰</button>
+            <button id="dark-mode-toggle" aria-label="Toggle dark mode">⏾</button>
+            <ul id="nav-menu">
                 <li><a href="#home">Home</a></li>
                 <li><a href="#about">About</a></li>
                 <li><a href="#services">Services</a></li>
@@ -40,21 +42,13 @@
                     <th scope="col">Price</th>
                 </tr>
                 </thead>
-                <tbody>
-                    <tr>
-                        <th scope="row">Graphic Design</th>
-                        <td>Php 700-1500</td>
-                    </tr>
-                    <tr>
-                        <th scope="row">Digital Art</th>
-                        <td>Php 500-1500</td>
-                    </tr>
+                <tbody id="services-body">
                 </tbody>
             </table>
         </section>
         <section id="contact">
             <h2>Contact Me</h2>
-            <form action="#" method="post">
+            <form id="contact-form" action="#" method="post">
                 <label for="name">Name:</label>
                 <input type="text" id="name" name="name" required>
 
@@ -68,8 +62,10 @@
             </form>
         </section>
 
-    </main>    <footer>
+    </main>    
+    <footer>
         <p> 2026 Justine Alpuerto</p>
     </footer>
+    <script src="js/script.js"></script>
 </body>
 </html>
