@@ -14,24 +14,59 @@ if (navToggle && navMenu) {
     });
 }
 
+var DEFAULT_SETTINGS = {
+    theme: 'light',
+    visitorName: '',
+    lastVisit: new Date().toISOString()
+};
+
+function loadSettings() {
+    try {
+        var rawData = localStorage.getItem('app_settings');
+        if (!rawData) return DEFAULT_SETTINGS;
+        
+        // Parse JSON and merge with defaults in case keys are missing
+        var parsedData = JSON.parse(rawData);
+        return { ...DEFAULT_SETTINGS, ...parsedData };
+    } catch (error) {
+        console.warn('Local Storage data was corrupt or unreadable. Falling back to defaults.', error);
+        return DEFAULT_SETTINGS;
+    }
+}
+
+function saveSettings(settings) {
+    try {
+        localStorage.setItem('app_settings', JSON.stringify(settings));
+    } catch (error) {
+        console.error('Failed to save settings to Local Storage:', error);
+    }
+}
+
+var currentSettings = loadSettings();
+currentSettings.lastVisit = new Date().toISOString();
+saveSettings(currentSettings);
+
 var darkModeToggle = document.getElementById('dark-mode-toggle');
 
 if (darkModeToggle) {
-    if (localStorage.getItem('theme') === 'dark') {
+    if (currentSettings.theme === 'dark') {
         document.body.classList.add('dark-theme');
         darkModeToggle.textContent = '☀︎';
+    } else {
+        darkModeToggle.textContent = '⏾';
     }
 
     darkModeToggle.addEventListener('click', function() {
         document.body.classList.toggle('dark-theme');
 
         if (document.body.classList.contains('dark-theme')) {
-            localStorage.setItem('theme', 'dark');
+            currentSettings.theme = 'dark';
             darkModeToggle.textContent = '☀︎';
         } else {
-            localStorage.setItem('theme', 'light');
+            currentSettings.theme = 'light';
             darkModeToggle.textContent = '⏾';
         }
+        saveSettings(currentSettings);
     });
 }
 
@@ -66,9 +101,12 @@ if (contactForm) {
             formFeedback.textContent = 'Please fill out all required fields before sending.';
             formFeedback.style.color = 'red';
         }   
-        else {
+       else {
             event.preventDefault(); 
-            formFeedback.textContent = 'Thank you! Your message is succesfully sent.';
+            currentSettings.visitorName = nameValue;
+            saveSettings(currentSettings);
+
+            formFeedback.textContent = 'Thank you! Your message is submitted succesfully.';
             formFeedback.style.color = 'green';
             contactForm.reset();
         }

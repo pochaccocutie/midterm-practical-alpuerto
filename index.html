@@ -4,6 +4,21 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Alpuerto's Portfolio</title>
+
+    <script>
+    try {
+        var stored = localStorage.getItem('app_settings');
+        if (stored) {
+            var settings = JSON.parse(stored);
+            if (settings.theme === 'dark') {
+                document.body.classList.add('dark-theme');
+            }
+        }
+    } catch (e) {
+        
+    }
+</script>
+
     <link rel="stylesheet" href="css/style.css"> 
 </head>
 <body>
