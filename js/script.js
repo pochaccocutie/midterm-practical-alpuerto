@@ -21,16 +21,20 @@ var DEFAULT_SETTINGS = {
 };
 
 function loadSettings() {
-    try {
+   try {
         var rawData = localStorage.getItem('app_settings');
-        if (!rawData) return DEFAULT_SETTINGS;
+        if (!rawData) return { ...DEFAULT_SETTINGS };
         
-        // Parse JSON and merge with defaults in case keys are missing
         var parsedData = JSON.parse(rawData);
+        
+        if (typeof parsedData !== 'object' || parsedData === null) {
+            return { ...DEFAULT_SETTINGS };
+        }
+
         return { ...DEFAULT_SETTINGS, ...parsedData };
     } catch (error) {
         console.warn('Local Storage data was corrupt or unreadable. Falling back to defaults.', error);
-        return DEFAULT_SETTINGS;
+        return { ...DEFAULT_SETTINGS };
     }
 }
 
@@ -68,6 +72,11 @@ if (darkModeToggle) {
         }
         saveSettings(currentSettings);
     });
+}
+
+var nameInput = document.getElementById('name');
+if (nameInput && currentSettings.visitorName) {
+    nameInput.value = currentSettings.visitorName;
 }
 
 var servicesData = [

@@ -11,12 +11,10 @@
         if (stored) {
             var settings = JSON.parse(stored);
             if (settings.theme === 'dark') {
-                document.body.classList.add('dark-theme');
+                document.documentElement.classList.add('dark-theme');
             }
         }
-    } catch (e) {
-        
-    }
+    } catch (e) {}
 </script>
 
     <link rel="stylesheet" href="css/style.css"> 
